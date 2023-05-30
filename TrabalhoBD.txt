@@ -1,0 +1,211 @@
+Considere o Banco de Dados SuperTV e responda as 10 questões abaixo:
+
+
+create database SuperTV;
+use SuperTV;
+
+Create table Planos(
+	Id int(3) primary key auto_increment,
+	Combo varchar(30) not null,
+	Preco decimal (6,2) not null,
+	Canais varchar(100) not null 
+	);
+
+insert Planos values (0, "Basico", 59.99, "Tv aberta + 2 desenhos + 2 esportes + 1 noticias"),
+(0, "Normal", 89.99, "Tv aberta + 3 desenhos + 3 esportes + 1 noticias + 1 filmes"),
+(0, "Hiper", 100.00, "Tv aberta + 3 desenhos + 4 esportes + 2 noticias + 2 documentarios"),
+(0, "Silver", 120.00, "Tv aberta + todos desenhos + todos esportes + 1 noticias + 2 documentarios + 2 filmes"),
+(0, "Gold", 150.00, "Todos os canais + PPV + Adulto");
+
+Create table Clientes(
+	Codigo int(10) not null primary key,
+	Nome varchar(30) not null,
+	Telefone varchar(20) not null,
+	Cidade varchar(50) not null,
+	PlanosId int(3) not null,
+	foreign key (PlanosId) references Planos(Id) 
+	);
+
+insert  Clientes  values (1, "Clarence Daniels", "63-(880)325-6931", "Hinunangan", 4);
+insert  Clientes  values (2, "Craig Jordan", "1-(597)573-2623", "Laguna Salada", 2);
+insert  Clientes  values (3, "Melissa Bennett", "33-(922)390-7610", "Montluel", 2);
+insert  Clientes  values (4, "Jessica Johnston", "692-(357)829-9023", "Airuk", 1);
+insert  Clientes  values (5, "Joan Garrett", "7-(672)549-2896", "Vostryakovo", 3);
+insert  Clientes  values (6, "Brandon Rivera", "48-(780)530-1523", "Łazy", 2);
+insert  Clientes  values (7, "Deborah Hawkins", "66-(385)149-5139", "Nong Ruea", 3);
+insert  Clientes  values (8, "Roger Stanley", "62-(972)752-7986", "Petung", 1);
+insert  Clientes  values (9, "Kathy Diaz", "358-(119)408-9566", "Janakkala", 2);
+insert  Clientes  values (10, "Rebecca Henderson", "62-(713)771-4611", "Lajaluhur", 4);
+insert  Clientes  values (11, "Ashley Fernandez", "62-(260)790-9901", "Kanugrahan", 2);
+insert  Clientes  values (12, "Brian Perkins", "86-(611)219-9813", "Datong", 5);
+insert  Clientes  values (13, "Rachel Gardner", "86-(335)816-5503", "Sanshan", 4);
+insert  Clientes  values (14, "Ann Simpson", "86-(225)170-3406", "Jianxincun", 5);
+insert  Clientes  values (15, "Stephanie Smith", "353-(420)303-4869", "Whitegate", 5);
+insert  Clientes  values (16, "Nicholas Rivera", "81-(460)772-4246", "Maebashi-shi", 4);
+insert  Clientes  values (17, "Mary Torres", "218-(910)958-7110", "Zawiya", 2);
+insert  Clientes  values (18, "Russell Meyer", "84-(389)959-9628", "Kinh Môn", 2);
+insert  Clientes  values (19, "Lori Morgan", "86-(319)172-9857", "Zaoxi", 1);
+insert  Clientes  values (20, "Edward Reyes", "48-(899)502-7642", "Lisewo Malborskie", 5);
+insert  Clientes  values (21, "Earl Graham", "420-(546)238-0287", "Humpolec", 4);
+insert  Clientes  values (22, "Nancy Thompson", "850-(918)868-0556", "Kangdong-ŭp", 2);
+insert  Clientes  values (23, "Maria Murphy", "86-(567)282-0923", "Jiefangyan", 3);
+insert  Clientes  values (24, "Kathleen Ryan", "86-(326)639-9524", "Daxi", 4);
+insert  Clientes  values (25, "Billy Stone", "48-(114)858-8612", "Wielichowo", 2);
+insert  Clientes  values (26, "Dorothy Cooper", "55-(296)160-1932", "Senador Pompeu", 2);
+insert  Clientes  values (27, "Louise Ferguson", "56-(441)853-2882", "Vilcún", 1);
+insert  Clientes  values (28, "James Lopez", "966-(125)464-3685", "Julayjilah", 1);
+insert  Clientes  values (29, "Susan Edwards", "227-(682)748-4859", "Zinder", 2);
+insert  Clientes  values (30, "Daniel Elliott", "52-(349)666-1090", "Independencia", 1);
+
+create table Financeiro(
+	Oper int primary key auto_increment,
+	ClientesCodigo int(10) not null,
+	Mes varchar(15) not null,
+	Status varchar(15) not null,
+	foreign key(ClientesCodigo) references clientes(codigo)
+	);
+insert Financeiro values (0, 1, "Jan", "Pago"),
+(0, 1, "Fev", "Pago"),
+(0, 2, "Jan", "Pago"),
+(0, 2, "Fev", "Aberto"),
+(0, 3, "Jan", "Aberto"),
+(0, 3, "Fev", "Aberto"),
+(0, 4, "Jan", "Pago"),
+(0, 4, "Fev", "Pago"),
+(0, 5, "Jan", "Aberto"),
+(0, 5, "Fev", "Pago"),
+(0, 6, "Jan", "Pago"),
+(0, 6, "Fev", "Pago"),
+(0, 7, "Jan", "Pago"),
+(0, 7, "Fev", "Pago"),
+(0, 8, "Jan", "Pago"),
+(0, 8, "Fev", "Pago"),
+(0, 9, "Jan", "Pago"),
+(0, 9, "Fev", "Pago"),
+(0, 10, "Jan", "Pago"),
+(0, 10, "Fev", "Pago"),
+(0, 11, "Jan", "Pago"),
+(0, 12, "Fev", "Pago"),
+(0, 13, "Jan", "Pago"),
+(0, 13, "Fev", "Pago"),
+(0, 14, "Jan", "Pago"),
+(0, 14, "Fev", "Pago"),
+(0, 15, "Fev", "Pago"),
+(0, 16, "Fev", "Pago"),
+(0, 17, "Fev", "Pago"),
+(0, 18, "Fev", "Pago"),
+(0, 19, "Fev", "Aberto"),
+(0, 20, "Fev", "Aberto"),
+(0, 21, "Jan", "Pago"),
+(0, 21, "Fev", "Pago"),
+(0, 22, "Jan", "Pago"),
+(0, 22, "Fev", "Pago"),
+(0, 23, "Jan", "Pago"),
+(0, 23, "Fev", "Aberto"),
+(0, 24, "Jan", "Pago"),
+(0, 24, "Fev", "Pago"),
+(0, 25, "Fev", "Pago"),
+(0, 26, "Jan", "Pago"),
+(0, 26, "Fev", "Pago"),
+(0, 27, "Jan", "Pago"),
+(0, 27, "Fev", "Pago"),
+(0, 28, "Jan", "Pago"),
+(0, 28, "Fev", "Pago"),
+(0, 29, "Jan", "Pago"),
+(0, 29, "Fev", "Pago"),
+(0, 30, "Jan", "Pago"),
+(0, 30, "Fev", "Pago");
+
+
+create table Ex_clientes(
+	Num int primary key auto_increment,
+	ClientesCodigo int(10) not null,
+	foreign key(ClientesCodigo) references clientes(codigo)
+);
+insert Ex_clientes values 
+(0, 2),
+(0, 15),
+(0, 19),
+(0, 20),
+(0, 25);
+
+
+/*1)Selecione o nome do cliente, o telefone do cliente, o nome do plano, e o valor do plano.*/
+
+SELECT Clientes.Nome, Clientes.Telefone, Planos.Combo, Planos.Preco 
+FROM SuperTV.Clientes, SuperTV.Planos 
+WHERE Clientes.PlanosId = Planos.Id;
+
+
+
+/*2)Selecione o nome do cliente, o status de pagamentos e o mês. Somente do mês de fevereiro*/
+
+SELECT Clientes.Nome, Financeiro.Status, Financeiro.Mes 
+FROM SuperTV.Clientes, SuperTV.Financeiro 
+
+WHERE Clientes.Codigo = Financeiro.ClientesCodigo AND Financeiro.Mes = "Fev";
+
+
+
+/*3)Selecione o nome do cliente, o telefone do cliente, e o mês que o status esteja em aberto.*/
+
+SELECT Clientes.Nome, Clientes.Telefone, Financeiro.Mes 
+FROM SuperTV.Clientes, SuperTV.Financeiro 
+WHERE Clientes.Codigo = Financeiro.ClientesCodigo AND Financeiro.Status = "Aberto";
+
+
+
+/*4) Selecione nome dos clientes, preço de planos e canais em ordem crescente do nome. (pesquise o comando para ordenar)*/
+
+SELECT Clientes.Nome, Planos.Preco, Planos.Canais 
+FROM SuperTV.Clientes, SuperTV.Planos 
+WHERE Clientes.PlanosId = Planos.Id ORDER BY Clientes.Nome;
+
+
+
+/*5) Acrescente um aumento de 10% para todos os combos com exceção do plano básico.*/
+
+UPDATE Planos 
+SET Preco = Preco+(Preco * 0.1) 
+WHERE id != 1;
+
+
+
+/*6)Modifique o nome do combo de “Hiper” para “Max”, Adicione mais um canal de documentários e aumente o preço para R$ 115,00.*/
+
+UPDATE Planos 
+SET Combo = "Max", Canais = "Tv aberta + 3 desenhos + 4 esportes + 2 noticias + 3 documentarios", Preco = 115
+WHERE Combo = "Hiper";
+
+
+
+/*7) Verifique o mês em aberto da cliente Lori Morgan, e modifique o Status do pagamento para Pago.*/
+
+SELECT Mes 
+FROM Financeiro 
+WHERE ClientesCodigo = 19;
+UPDATE Financeiro 
+SET Status = "Pago" 
+WHERE ClientesCodigo = 19;
+
+
+
+/*8) Exclua o nome da Lori Morgan da tabela Ex_Clientes.*/
+
+DELETE FROM Ex_clientes
+WHERE ClientesCodigo = 19;
+
+
+
+/*9) Modifique o combo do cliente “Roger Stanley”, de “Básico” para “Max”.*/
+
+UPDATE Clientes SET PlanosId = "5" WHERE Codigo = 8;
+
+
+
+/* 10) Selecione o código, nome, status financeiro e mês de ex clientes que tem parcela em aberto.*/
+
+SELECT DISTINCT Ex_clientes.ClientesCodigo, Clientes.Nome, Financeiro.Status, Financeiro.Mes 
+FROM SuperTV.Ex_clientes, SuperTV.Clientes, SuperTV.Financeiro 
+WHERE Clientes.Codigo = Ex_clientes.ClientesCodigo AND Financeiro.Status = "Aberto";
+
